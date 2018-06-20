@@ -14,6 +14,7 @@ public class HttpRouter extends RouteBuilder {
     private void httpRoute(){
         from("timer://aaa?repeatCount=1")
                 .process(new BodyProcess())
-                .to("http://localhost:8080/test/echo");
+                .to("http://localhost:8080/test/echo")
+                .bean(new ResponseHandler(),"handler");
     }
 }

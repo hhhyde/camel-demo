@@ -2,7 +2,6 @@ package com.toge.cameldemo.http;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.builder.Builder;
 
 public class BodyProcess implements Processor {
     @Override
