@@ -1,7 +1,5 @@
 package com.toge.cameldemo.type_convert;
 
-import org.apache.camel.Exchange;
-import org.apache.camel.TypeConversionException;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +9,7 @@ import java.io.File;
 public class MyCamelRouter extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        ftpRoute();
+//        ftpRoute();
     }
 
     private void ftpRoute() {
