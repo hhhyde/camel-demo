@@ -12,7 +12,7 @@ import javax.servlet.ServletRequest;
 public class TestController {
 
     @GetMapping("echo")
-    public String echo(@RequestParam("echo") String echo, @RequestParam(value = "echo123",required = false) String echo123, ServletRequest request){
+    public String echo(@RequestParam(value = "echo", required = false) String echo, @RequestParam(value = "echo123", required = false) String echo123, ServletRequest request) {
         return echo;
     }
 }
