@@ -3,7 +3,7 @@ package com.demo.cameldemo.demo;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class 多终端选择 extends RouteBuilder {
     @Override
     public void configure() {
