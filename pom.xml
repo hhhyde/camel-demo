@@ -74,6 +74,11 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.40</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-rabbitmq</artifactId>
+            <version>2.19.0</version>
+        </dependency>
 
     </dependencies>
 
