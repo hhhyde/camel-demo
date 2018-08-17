@@ -1,4 +1,4 @@
-package com.toge.cameldemo.http;
+package com.demo.cameldemo.http;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;

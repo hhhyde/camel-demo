@@ -1,4 +1,4 @@
-package com.toge.cameldemo.http;
+package com.demo.cameldemo.http;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class HttpRouter extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        httpRoute();
+//        httpRoute();
     }
 
 

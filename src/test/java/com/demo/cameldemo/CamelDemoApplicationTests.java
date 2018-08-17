@@ -1,4 +1,4 @@
-package com.toge.cameldemo;
+package com.demo.cameldemo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

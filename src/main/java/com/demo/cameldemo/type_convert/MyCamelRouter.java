@@ -1,4 +1,4 @@
-package com.toge.cameldemo.type_convert;
+package com.demo.cameldemo.type_convert;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
