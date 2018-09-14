@@ -6,7 +6,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.http.common.HttpMessage;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class 接收跨域请求 extends RouteBuilder {
     @Override
     public void configure() throws Exception {
