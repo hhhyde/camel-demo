@@ -4,10 +4,12 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.RouteDefinition;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class WSRouter extends RouteBuilder {
     @Override
     public void configure() throws Exception {
+
+        from("cxf://aa?serviceClass=com.demo.cameldemo.webservices.service_endpoint_interface.IncidentService").log("$$$$$");
 
 //        startWSServer();
 
