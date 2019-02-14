@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 
-@Component
+//@Component
 public class RabbitDemo extends RouteBuilder {
 
     @Autowired
