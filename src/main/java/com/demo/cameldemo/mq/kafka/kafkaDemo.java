@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 
-@Component
+
 public class kafkaDemo extends RouteBuilder {
     @Override
     public void configure() throws Exception {
@@ -37,7 +37,7 @@ public class kafkaDemo extends RouteBuilder {
 //        from("direct:start").log("777");
 
         from("direct:start").process(exchange -> {
-            exchange.getIn().setBody("Test Message from Camel Kafka Component Final",String.class);
+            exchange.getIn().setBody("Test Message from Camel Kafka Component Final", String.class);
             exchange.getIn().setHeader(KafkaConstants.PARTITION_KEY, 0);
             exchange.getIn().setHeader(KafkaConstants.KEY, "1");
         }).to("kafka:119.27.161.183:9092?topic=test");
@@ -51,32 +51,37 @@ public class kafkaDemo extends RouteBuilder {
         }).log("发送文件")
                 .to("kafka:119.27.161.183:9092?topic=test");
 
-
         from("kafka:119.27.161.183:9092?topic=test&groupId=testing&autoOffsetReset=earliest&consumersCount=1")
-                .process(new Processor() {
-                    @Override
-                    public void process(Exchange exchange)
-                            throws Exception {
-                        String messageKey = "";
-                        if (exchange.getIn() != null) {
-                            Message message = exchange.getIn();
-                            Integer partitionId = (Integer) message
-                                    .getHeader(KafkaConstants.PARTITION);
-                            String topicName = (String) message
-                                    .getHeader(KafkaConstants.TOPIC);
-                            if (message.getHeader(KafkaConstants.KEY) != null)
-                                messageKey = (String) message
-                                        .getHeader(KafkaConstants.KEY);
-                            Object data = message.getBody();
+                .log("1");
+        from("kafka:119.27.161.183:9092?topic=test&groupId=testing&autoOffsetReset=earliest&consumersCount=1")
+                .log("2");
 
 
-                            System.out.println("topicName :: "
-                                    + topicName + " partitionId :: "
-                                    + partitionId + " messageKey :: "
-                                    + messageKey + " message :: "
-                                    + data + "\n");
-                        }
-                    }
-                });
+//        from("kafka:119.27.161.183:9092?topic=test&groupId=testing&autoOffsetReset=earliest&consumersCount=1")
+//                .process(new Processor() {
+//                    @Override
+//                    public void process(Exchange exchange)
+//                            throws Exception {
+//                        String messageKey = "";
+//                        if (exchange.getIn() != null) {
+//                            Message message = exchange.getIn();
+//                            Integer partitionId = (Integer) message
+//                                    .getHeader(KafkaConstants.PARTITION);
+//                            String topicName = (String) message
+//                                    .getHeader(KafkaConstants.TOPIC);
+//                            if (message.getHeader(KafkaConstants.KEY) != null)
+//                                messageKey = (String) message
+//                                        .getHeader(KafkaConstants.KEY);
+//                            Object data = message.getBody();
+//
+//
+//                            System.out.println("topicName :: "
+//                                    + topicName + " partitionId :: "
+//                                    + partitionId + " messageKey :: "
+//                                    + messageKey + " message :: "
+//                                    + data + "\n");
+//                        }
+//                    }
+//                });
     }
 }
