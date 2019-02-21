@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 
-@Component
+//@Component
 public class kafkaDemo extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
