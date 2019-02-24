@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+//@Component
 public class ActiveMqDemo extends RouteBuilder {
 
     @Override
