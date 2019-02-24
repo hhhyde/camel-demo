@@ -6,11 +6,13 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.kafka.KafkaComponent;
 import org.apache.camel.component.kafka.KafkaConstants;
 import org.apache.camel.component.kafka.KafkaManualCommit;
+import org.apache.camel.model.RouteDefinition;
 import org.apache.camel.processor.DeadLetterChannel;
 import org.apache.commons.httpclient.util.DateUtil;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 多客户端订阅同一个topic
