@@ -7,11 +7,19 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-@Component
+//@Component
 public class 消息过滤 extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        selector();
+
+
+        from("activemq:queue:dead").process(exchange -> {
+            System.out.println(exchange.getIn().getBody());
+            exchange.getOut().setHeader("routeId",exchange.getIn().getHeader("OriginRouteId")); // 指定发给2号
+        })
+        .to("activemq:topic:重复消费-消息分发");
+
+//        selector();
     }
 
     /**
