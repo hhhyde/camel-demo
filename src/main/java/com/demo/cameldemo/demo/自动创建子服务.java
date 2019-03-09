@@ -6,7 +6,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.RouteDefinition;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class 自动创建子服务 extends RouteBuilder {
     @Override
     public void configure() throws Exception {

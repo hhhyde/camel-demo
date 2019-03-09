@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * 动态选择一个结束端进行转发
  */
-@Component
+//@Component
 public class 动态查找终端 extends RouteBuilder {
     @Override
     public void configure() {

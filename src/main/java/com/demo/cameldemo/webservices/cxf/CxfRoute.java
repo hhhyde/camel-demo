@@ -4,7 +4,7 @@ import com.demo.cameldemo.webservices.cxf.service.impl.BaseicQueryImpl;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class CxfRoute extends RouteBuilder {
 
     public static final String BASEICQUERY_SERVICE_URL = "http://localhost:9999/abc";

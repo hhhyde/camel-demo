@@ -3,7 +3,7 @@ package com.demo.cameldemo.quartz;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class QuartzDemo extends RouteBuilder {
     @Override
     public void configure() {
