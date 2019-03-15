@@ -6,7 +6,7 @@ import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class JDBC批量执行 extends RouteBuilder {
 
 
