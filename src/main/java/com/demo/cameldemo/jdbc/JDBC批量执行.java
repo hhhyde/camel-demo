@@ -16,8 +16,8 @@ public class JDBC批量执行 extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		注册数据库("49", "jdbc:oracle:thin:@223.87.179.49:1521:ORCL");
-		注册数据库("183", "jdbc:oracle:thin:@119.27.161.183:49161:XE");
-		注册数据库("110", "jdbc:oracle:thin:@x23178478p.iok.la:1521:ORCL");
+//		注册数据库("183", "jdbc:oracle:thin:@119.27.161.183:49161:XE");
+//		注册数据库("110", "jdbc:oracle:thin:@x23178478p.iok.la:1521:ORCL");
 
 		批量执行效率();
 //        非批量执行效率();
@@ -47,6 +47,21 @@ public class JDBC批量执行 extends RouteBuilder {
 	}
 
 	public void 批量执行效率() {
+
+		from("timer://批量执行效率?repeatCount=1")
+				.process(ex -> {
+					ex.setProperty("CostTime", System.currentTimeMillis());
+					System.out.println("###### 开始同步!" + ex.getExchangeId());
+				})
+				.to("sql:DELETE FROM T_OA_MEETING_LIST where 1=1?dataSource=49&batch=true&transacted=true")
+				.process(exchange -> {
+					System.out.println(String.format("查询结束,数据量:%s,耗时:%dms", exchange.getIn().getHeader("CamelSqlRowCount"), System.currentTimeMillis() - (long) exchange.getProperty("CostTime")));
+				})
+//				.to("sql:DELETE FROM SYS_USER_COPY WHERE ID=:#ID?dataSource=183&batch=true&transacted=true") // 数据存在更新时的场景,先删除再新增
+//				.to("sql://INSERT%20INTO%20SYS_USER_COPY(ID,USERNAME,PASSWORD,CONTENT,INFO,DD,TT)%20values%20(:#ID,:#USERNAME,:#PASSWORD,:#CONTENT,:#INFO,:#DD,:#TT)?batch=true&dataSource=49")
+		;
+
+
 		// TODO: 2019-03-09 多sql事务无法共享
 		from("timer://批量执行效率?repeatCount=1")
 				.onCompletion().process(exchange -> {
@@ -57,12 +72,12 @@ public class JDBC批量执行 extends RouteBuilder {
 					ex.setProperty("CostTime", System.currentTimeMillis());
 					System.out.println("###### 开始同步!" + ex.getExchangeId());
 				})
-				.to("sql:select * from SYS_USER?dataSource=49")
+				.to("sql://SELECT%20%20SYS_USER.ID%20,%20SYS_USER.USERNAME%20,%20SYS_USER.PASSWORD%20,%20SYS_USER.CONTENT%20,%20SYS_USER.INFO%20,%20SYS_USER.DD%20,%20SYS_USER.TT%20FROM%20SYS_USER%20where%201=1?dataSource=49")
 				.process(exchange -> {
 					System.out.println(String.format("查询结束,数据量:%s,耗时:%dms", exchange.getIn().getHeader("CamelSqlRowCount"), System.currentTimeMillis() - (long) exchange.getProperty("CostTime")));
 				})
 //				.to("sql:DELETE FROM SYS_USER_COPY WHERE ID=:#ID?dataSource=183&batch=true&transacted=true") // 数据存在更新时的场景,先删除再新增
-				.to("sql:INSERT INTO SYS_USER_COPY(ID, USERNAME, PASSWORD, CONTENT, INFO, DD, TT) VALUES (:#ID,:#USERNAME,:#PASSWORD,:#CONTENT,:#INFO,:#DD,:#TT)?dataSource=183&batch=true")
+				.to("sql://INSERT%20INTO%20SYS_USER_COPY(ID,USERNAME,PASSWORD,CONTENT,INFO,DD,TT)%20values%20(:#ID,:#USERNAME,:#PASSWORD,:#CONTENT,:#INFO,:#DD,:#TT)?batch=true&dataSource=49")
 		;
 	}
 
@@ -79,8 +94,8 @@ public class JDBC批量执行 extends RouteBuilder {
 
 		builder.addPropertyValue("driverClassName", "oracle.jdbc.driver.OracleDriver");
 		builder.addPropertyValue("url", url);
-		builder.addPropertyValue("username", "DATAPLATFORM");
-		builder.addPropertyValue("password", "DATAPLATFORM");
+		builder.addPropertyValue("username", "i3s");
+		builder.addPropertyValue("password", "i3s");
 		defaultListableBeanFactory.registerBeanDefinition(name, builder.getBeanDefinition());
 
 	}
