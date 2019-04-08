@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @Version:1.1.0
  */
 
-//@Component("incidentService")
+@Component("incidentService")
 public interface IncidentService {
     /**
      * @param input

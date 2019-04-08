@@ -1,6 +1,7 @@
 package com.demo.cameldemo;
 
 import org.apache.activemq.broker.jmx.BrokerViewMBean;
+import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,7 +24,10 @@ public class CamelDemoApplication {
         SpringApplication.run(CamelDemoApplication.class, args);
     }
 
-
+    @Bean
+    public SpringBus cxf() {
+        return new SpringBus();
+    }
 
     @Bean
     public ServletRegistrationBean cxfServlet() {
