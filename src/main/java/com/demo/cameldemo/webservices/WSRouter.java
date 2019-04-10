@@ -4,7 +4,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.RouteDefinition;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class WSRouter extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
