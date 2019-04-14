@@ -13,7 +13,7 @@ public class FtpProcess extends RouteBuilder {
                 .process(exchange -> {
                     System.out.println(exchange);
                 })
-                .to("file:abc4444444")
+                .to("sftp://ubuntu@119.27.161.183/Music1?password=333333aa&localWorkDirectory=/Downloads")
         ;
     }
 }
